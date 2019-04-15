@@ -15,6 +15,8 @@ koin 1.0.0
 
 Khttp 0.1.0
 
+Docker 18.09.5
+
 
 # Instruções
 Todos os comandos deverão ser executado via terminal.
