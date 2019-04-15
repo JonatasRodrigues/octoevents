@@ -23,7 +23,7 @@ Todos os comandos deverão ser executado via terminal.
 
 Fazer o checkout via GitHub e na raiz do projeto executar o comando abaixo:
 
-<b>mvn clean install</b>
+<b>mvn clean compile install</b>
 
 Após realizar o build, executar o arquivo DockerFile
 
