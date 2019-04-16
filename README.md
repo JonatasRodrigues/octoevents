@@ -29,7 +29,23 @@ Após realizar o build, executar o arquivo DockerFile
 
 <b>docker build -t kotlin . && docker run kotlin</b>
 
- Em seguida ir até a pasta do ngrok e executar o comando <b>./ngrok http 8080</b>, copiar o endereço http gerado. Ir ao github, entrar em repositories, clicar em octoevents,
+Criar uma network
+
+<b>docker network create myngroknet</b>
+
+Executar o container www baseado no image kotlin gerada acima e associá-la com a network
+
+<b>docker run -d -p 8080 --net myngroknet --name www kotlin</>
+
+Executar o container do ngrok e associar a network para permitir que o ngrok acesse o container www
+
+<b>docker run -d -p 4040:4040 --net myngroknet --name ngrok wernight/ngrok ngrok http www:8080</b>
+
+Após alguns segundos, executar o comando abaixo para obter a public_url
+
+<b>curl $(docker port ngrok 4040)/api/tunnels</b>
+
+ Em seguida, <b>copiar a public_url</b>, acessar o github, entrar em repositories, clicar em octoevents,
  settings, Webhooks, edit no webhook payload e colar o endereço gerado pelo nghok.
 
 Para execução da gravação do evento, no github, criar issue no repositório octoevents
@@ -38,10 +54,10 @@ Para execução da gravação do evento, no github, criar issue no repositório 
 # Endpoints
 
 
-Criar issues
+<b>Criar issues</b>
 
 POST - http://localhost:8080/
 
-buscar issue
+<b>buscar issue</b>
 
 GET - http://localhost:8080/issues/{issue-number}/events
