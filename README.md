@@ -35,7 +35,7 @@ Criar uma network
 
 Executar o container www baseado no image kotlin gerada acima e associá-la com a network
 
-<b>docker run -d -p 8080 --net myngroknet --name www kotlin</>
+<b>docker run -d -p 8080 --net myngroknet --name www kotlin</b>
 
 Executar o container do ngrok e associar a network para permitir que o ngrok acesse o container www
 
